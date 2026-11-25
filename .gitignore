@@ -1,0 +1,33 @@
+# 依赖
+node_modules/
+
+# 构建 / 产物
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# 测试 / 覆盖率
+coverage/
+
+# 日志
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 环境变量
+.env
+.env.*
+!.env.example
+
+# 运行时缓存
+.cache/
+.vitest/
+
+# 编辑器 / 系统
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

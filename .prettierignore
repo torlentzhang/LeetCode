@@ -1,0 +1,6 @@
+docs/
+AGENTS.md
+.agents/
+node_modules/
+package-lock.json
+tsconfig.json
