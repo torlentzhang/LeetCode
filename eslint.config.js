@@ -4,7 +4,8 @@ import tseslint from 'typescript-eslint'
 
 export default defineConfig([
   {
-    ignores: ['node_modules/', 'docs/'],
+    // coverage/ 是覆盖率报告生成物（已被 .gitignore 忽略），不参与 lint
+    ignores: ['node_modules/', 'docs/', 'coverage/'],
   },
   {
     files: ['**/*.ts'],
