@@ -25,4 +25,11 @@ export default defineConfig([
       ],
     },
   },
+  {
+    // solutions/review/ 下是复习用的空壳桩，函数体只有 throw，参数暂时用不到
+    files: ['solutions/review/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
 ])

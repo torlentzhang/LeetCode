@@ -1,4 +1,20 @@
-// 判断一串括号是否合法闭合
+// 20. 有效的括号
+//
+// 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s，判断字符串是否有效。
+//
+// 有效字符串需满足：
+// 1. 左括号必须用相同类型的右括号闭合。
+// 2. 左括号必须以正确的顺序闭合。
+// 3. 每个右括号都有一个对应的相同类型的左括号。
+//
+// 示例 1：输入 s = "()"，输出 true
+// 示例 2：输入 s = "()[]{}"，输出 true
+// 示例 3：输入 s = "(]"，输出 false
+// 示例 4：输入 s = "([])"，输出 true
+//
+// 提示：
+// - 1 <= s.length <= 10^4
+// - s 仅由括号 '()[]{}' 组成
 
 const pairs = { ')': '(', ']': '[', '}': '{' } as const
 type CloseBracket = keyof typeof pairs
@@ -6,21 +22,21 @@ function isCloseBracket(str: string): str is CloseBracket {
   return str in pairs
 }
 
-export function getResult(strs: string): boolean {
-  // 创建数组模拟栈结构（pop/push）
-  const myStack: string[] = []
-  // 循环这一串括号
-  for (let i = 0; i < strs.length; i++) {
-    const str = strs[i]
-    // 判断是否是右括号，是右括号判断栈顶是否是对应的左括号，不是则直接入栈顶
-    if (isCloseBracket(str)) {
-      const expected = pairs[str] // expected 是期望的左括号
-      if (myStack.pop() !== expected) {
+export function isValid(s: string): boolean {
+  const bracketsStack: string[] = []
+  for (let i = 0; i < s.length; i++) {
+    const curBracket = s[i]
+    if (isCloseBracket(curBracket)) {
+      const expected = pairs[curBracket]
+      if (bracketsStack.length === 0) {
+        return false
+      }
+      if (bracketsStack.pop() !== expected) {
         return false
       }
     } else {
-      myStack.push(str)
+      bracketsStack.push(curBracket)
     }
   }
-  return myStack.length === 0
+  return bracketsStack.length === 0
 }
